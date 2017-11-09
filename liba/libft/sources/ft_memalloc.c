@@ -21,11 +21,7 @@ void	*ft_memalloc(size_t size)
 	str1 = str;
 	if (str == NULL)
 		return (NULL);
-	while (size > 0)
-	{
-		*str = 0;
-		str++;
-		size--;
-	}
+	while (size-- > 0)
+		*(str++) = 0;
 	return (str1);
 }

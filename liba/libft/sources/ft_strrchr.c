@@ -20,10 +20,8 @@ char	*ft_strrchr(const char *s, int c)
 	while (*str)
 	{
 		if (*str == c)
-		{
 			if (ft_strchr(str + 1, c) == NULL)
 				return (str);
-		}
 		str++;
 	}
 	if (c == 0)

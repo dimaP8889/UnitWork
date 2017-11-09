@@ -28,12 +28,7 @@ char	*ft_strmapi(char const *s, char(*f)(unsigned int, char))
 			return (NULL);
 		str1 = str;
 		while (*s)
-		{
-			*str = f(a, *s);
-			str++;
-			s++;
-			a++;
-		}
+			*(str++) = f(a++, *(s++));
 		*str = '\0';
 		return (str1);
 	}

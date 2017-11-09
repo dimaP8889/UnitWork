@@ -14,13 +14,16 @@
 
 int		main(void)
 {
-	char *str = "privet Dimas privet !  ";
+	// char *str = "the cake is a lie !\0I'm hidden lol\r\n";
+	// char buff1[0xF00] = "there is no stars in the sky";
+	// char buff2[0xF00] = "there is no stars in the sky";
+	size_t max = strlen("the cake is a lie !\0I'm hidden lol\r\n") + 4;
+	char *str = "the cake is a lie !\0I'm hidden lol\r\n";
+	char buff1[0xF00] = "there is no stars in the sky";
+	char buff2[0xF00] = "there is no stars in the sky";
+	//size_t max = strlen("the cake is a lie !\0I'm hidden lol\r\n") + strlen("there is no stars in the sky");
 
-	char **dst = ft_strsplit(str, ' ');
-
-	while (*dst)
-	{
-		printf("%s\n", *dst);
-		dst++;
-	}
+	printf("max :%zu\n", max);
+	printf("%lu\n", ft_strlcat(buff2, str, max));
+	printf("%lu\n", strlcat(buff1, str, max));
 }

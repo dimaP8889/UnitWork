@@ -15,15 +15,9 @@
 void	*ft_bzero(void *b, size_t len)
 {
 	char	*str;
-	int		index;
 
-	index = 0;
 	str = (char *)b;
-	while (len > 0)
-	{
-		str[index] = '\0';
-		index++;
-		len--;
-	}
+	while (len-- > 0)
+		*(str++) = '\0';
 	return (str);
 }

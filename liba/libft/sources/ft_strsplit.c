@@ -18,9 +18,7 @@ static int countlet(char const *s, char c)
 
 	index = 0;
 	while (*s == c && *s)
-	{
 		s++;
-	}
 	while (*s != c && *s)
 	{
 		index++;
@@ -91,15 +89,13 @@ char	**ft_strsplit(char const *s, char c)
 		if (split == NULL)
 			return (NULL);
 		split1 = split;
-		while (coun - 1 > 0)
+		while (--coun > 0)
 		{
 			i = 0;
 			str = make_word(s, &i, c);
 			*split = ft_strdup(str);
-			free(str);
 			split++;
 			s = s + i;
-			coun--;
 		}
 		*split = 0;
 		return (split1);

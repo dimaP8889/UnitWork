@@ -17,13 +17,9 @@ void	*ft_memchr(const void *s, int c, size_t len)
 	char *str;
 
 	str = (char *)s;
-	while (len > 0 && *str)
-	{
+	while (len-- > 0 && *(str++))
 		if (*str == c)
 			return (str);
-		str++;
-		len--;
-	}
 	if (c == '\0')
 		return (str);
 	return (NULL);
