@@ -15,7 +15,7 @@
 char	*ft_strncat(char *s1, const char *s2, size_t n)
 {
 	int				index;
-	char *restrict	str;
+	char			str;
 
 	str = s1;
 	index = 0;
