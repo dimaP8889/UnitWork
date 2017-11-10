@@ -14,11 +14,8 @@
 
 int		main(void)
 {
-	char *data = "hello, i'm a data";
-	t_list *l = ft_lstnew(data, strlen(data) + 1);
-	if (!l)
-		printf("maladec\n");
-	printf("loh\n");
-	printf("%s\n", (char *)l);
-	printf("%s\n", l->content);
+	char		*str = "Hello les genw";
+
+	printf("def: %s\n", strnstr(str, "les genw", 7));
+	printf("my: %s\n", ft_strnstr(str, "les genw", 7));
 }

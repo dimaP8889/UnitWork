@@ -35,11 +35,12 @@ char		*ft_strnstr(const char *big, const char *little, size_t len)
 	char	*str;
 
 	str = (char *)big;
-	while (*str)
+	while (*str && len > 0)
 	{
-		if (f_strcmp(little, str, len - (str - big)) == 0)
+		if (f_strcmp(little, str, len) == 0)
 			return (str);
 		str++;
+		len--;
 	}
 	if (*little == '\0')
 		return (str);

@@ -29,4 +29,4 @@ fclean :
 	rm -rf ./*.o
 	rm -rf $(NAME)
 	
-re: clean all
+re: clean (NAME)
