@@ -72,5 +72,7 @@ char	*ft_strjoin(char const *s1, char const *s2);
 char	*ft_strcat(char *s1, const char *s2);
 char	*ft_strtrim(char const *s);
 char	**ft_strsplit(char const *s, char c);
+int		ft_atoi(char const *str);
+char	*ft_itoa(int index);
 
 #endif
