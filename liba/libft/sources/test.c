@@ -14,5 +14,11 @@
 
 int		main(void)
 {
-	printf("%s\n", ft_itoa(-1234));
+	char *data = "hello, i'm a data";
+	t_list *l = ft_lstnew(data, strlen(data) + 1);
+	if (!l)
+		printf("maladec\n");
+	printf("loh\n");
+	printf("%s\n", (char *)l);
+	printf("%s\n", l->content);
 }
