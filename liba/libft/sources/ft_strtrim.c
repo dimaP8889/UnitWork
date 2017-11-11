@@ -49,6 +49,13 @@ static	int		countwords(char const *s)
 	return (index);
 }
 
+static	char	const	*strsplit(char const *s)
+{
+	while ((*s == ' ' || *s == '\n' || *s == '\t') && *s != '\0')
+		s++;
+	return (s);
+}
+
 char		*ft_strtrim(char const *s)
 {
 	char *str;
@@ -60,8 +67,7 @@ char		*ft_strtrim(char const *s)
 		if (str == NULL)
 			return (NULL);
 		str1 = str;
-		while (*s == ' ' || *s == '\n' || *s == '\t')
-			s++;
+		s = strsplit(s);
 		while (*s)
 		{
 			while (*s != ' ' && *s != '\n' && *s != '\t' && *s != '\0')
@@ -73,6 +79,7 @@ char		*ft_strtrim(char const *s)
 			}
 				*(str++) = *(s++);
 		}
+		*str = '\0';
 		return (str1);
 	}
 	return (0);
