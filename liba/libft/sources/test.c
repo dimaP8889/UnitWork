@@ -39,8 +39,8 @@ int		main(void)
 			l->next = ft_lstnew(ft_strdup("ss"), 3);
 			l->next->next = ft_lstnew(ft_strdup("-_-"), 4);
 			ret = ft_lstmap(l, lstmap_f);
-			if (!ft_strcmp(ret->content, "OK !") && !ft_strcmp(ret->next->content, "OK !") && !strcmp(ret->next->next->content, "OK !") && !strcmp(l->content, " 1 2 3 ") && !strcmp(l->next->content, "ss") && !strcmp(l->next->next->content, "-_-"))
-				printf("molodec\n");
+			//if (!ft_strcmp(ret->content, "OK !") && !ft_strcmp(ret->next->content, "OK !") && !strcmp(ret->next->next->content, "OK !") && !strcmp(l->content, " 1 2 3 ") && !strcmp(l->next->content, "ss") && !strcmp(l->next->next->content, "-_-"))
+				printf("%zu\n", ret->content_size);
 			printf("loh\n");
 }
 
