@@ -12,46 +12,35 @@
 
 #include "../includes/libft.h"
 
+void	del(void *str, size_t size)
+{
+	free(str);
+	(void)size;
+}
+
+void			lstdel_f(void *lst, size_t s) {
+	(void)lst;
+	(void)s;
+	//__delNum++;
+}
+
+t_list *		lstmap_f(t_list *m)
+{
+	t_list *	r = ft_lstnew("OK !", 5);
+	(void)m;
+	return (r);
+}
+
 int		main(void)
 {
-//char			str[] = "  \t    \t\nBon\t \njour\t\n  \n     ";
-	char			str2[] = "Bonjourw";
-	//char			str3[] = "  \t\t\t   ";
-	char			*r;
-	//char			*str3 = NULL;
+			t_list	*l = ft_lstnew(strdup(" 1 2 3 "), 8);
+			t_list	*ret;
 
-	// ft_strtrim(NULL);
-	// r = ft_strtrim(str);
-	// if (strcmp(r, "Bon\t \njour"))
-	// {
-	
-	// 	printf("Error Line %d, Funct %s : \n\033[31mft_strstrim(\"  \t    \t\nBon\t \njour\t\n  \n     \").\nExpected ret = \"Bon\t \njour\" \
-	// 		   but have ret = \"%s\"\033[0m\n", __LINE__ - 2, __func__, r);
-	// 	free(r);
-	// 	return (0);
-	// }
-	// free(r);
-	r = ft_strtrim(str2);
-	printf("r: %s\n", r);
-	//str3 = strcpy(str3, "Bonjour");
-   if (ft_strcmp(r, "Bonjourw") || (str2 == r))
-    {
-        /*printf("Error Line %d, Funct %s : \n\033[31mft_strs
-        trim(\"Bonjour\").\nExpected ret = \"Bonjour\" and differents pointers\
-			   but have ret = \"%s\" and our: %p / your: %p\033[0m\n", __LINE__ - 2, __func__, r, str2, r);*/
-		free(r);
-        return (0);
-    }
-    free(r);
-// 	r = ft_strtrim(str3);
-//     if (strcmp(r, "") || (str3 == r))
-//     {
-//         printf("Error Line %d, Funct %s : \n\033[31mft_strstrim(\"  \t\t\t  \").\nExpected ret = \"\" and different\
-// s pointers but have ret = \"%s\" and our: %p / your: %p\033[0m\n", __LINE__ - 2, __func__, r, str3, r);
-// 		free(r);
-//         return (0);
-//     }
-    free(r);
-	return (1);
+			l->next = ft_lstnew(ft_strdup("ss"), 3);
+			l->next->next = ft_lstnew(ft_strdup("-_-"), 4);
+			ret = ft_lstmap(l, lstmap_f);
+			if (!ft_strcmp(ret->content, "OK !") && !ft_strcmp(ret->next->content, "OK !") && !strcmp(ret->next->next->content, "OK !") && !strcmp(l->content, " 1 2 3 ") && !strcmp(l->next->content, "ss") && !strcmp(l->next->next->content, "-_-"))
+				printf("molodec\n");
+			printf("loh\n");
 }
 
