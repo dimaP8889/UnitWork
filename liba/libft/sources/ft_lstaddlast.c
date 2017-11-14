@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstmap.c                                        :+:      :+:    :+:   */
+/*   ft_addlstlast.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpogrebn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/14 23:29:35 by dpogrebn          #+#    #+#             */
-/*   Updated: 2017/11/14 23:29:36 by dpogrebn         ###   ########.fr       */
+/*   Created: 2017/11/14 20:02:32 by dpogrebn          #+#    #+#             */
+/*   Updated: 2017/11/14 20:02:33 by dpogrebn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem))
+void	ft_lstaddlast(t_list *lst, t_list *elem)
 {
-	t_list	*new;
-
-	new = malloc(sizeof(t_list));
-	if (lst && new && f)
+	if (lst && elem)
 	{
-		new = f(lst);
-		lst = lst->next;
-		while (lst)
-		{
-			ft_lstaddlast(new, f(lst));
+		while (lst->next)
 			lst = lst->next;
-		}
-		return (new);
+		lst->next = elem;
 	}
-	return (NULL);
+	return ;
 }

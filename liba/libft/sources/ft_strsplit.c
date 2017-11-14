@@ -36,10 +36,15 @@ static int count(char const *s, char c)
 	{
 		while (*s == c && *s)
 			s++;
+		if (*s == '\0')
+			return (index + 1);
 		while (*s != c && *s)
 			s++;
 		if (*s == '\0')
+		{
+			index++;
 			return (index + 1);
+		}
 		index++;
 	}
 	return (index + 1);
