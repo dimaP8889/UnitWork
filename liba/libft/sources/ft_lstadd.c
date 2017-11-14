@@ -11,6 +11,6 @@ void	ft_lstadd(t_list **alst, t_list *new)
 		*alst = new;
 		return ;
 	}
-	new->next = (*alst)->content;
+	new->next = *alst;
 	*alst = new;
 }

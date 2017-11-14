@@ -12,10 +12,11 @@
 
 #include "../includes/libft.h"
 
-void	del(void *str, size_t size)
+t_list	*f(t_list *lst)
 {
-	free(str);
-	(void)size;
+	(void)(lst);
+	t_list *l = ft_lstnew((char *)"privet", 228);
+	return (l);
 }
 
 void			lstdel_f(void *lst, size_t s) {
@@ -33,14 +34,19 @@ t_list *		lstmap_f(t_list *m)
 
 int		main(void)
 {
-			t_list	*l = ft_lstnew(strdup(" 1 2 3 "), 8);
-			t_list	*ret;
+	t_list	*l = ft_lstnew((char *)"loleckapec", 26);
+	t_list	*s = ft_lstnew((char *)"lalalal", 20);
+	t_list	*k = ft_lstnew((char *)"lololo", 12);
+	t_list	*z;
 
-			l->next = ft_lstnew(ft_strdup("ss"), 3);
-			l->next->next = ft_lstnew(ft_strdup("-_-"), 4);
-			ret = ft_lstmap(l, lstmap_f);
-			//if (!ft_strcmp(ret->content, "OK !") && !ft_strcmp(ret->next->content, "OK !") && !strcmp(ret->next->next->content, "OK !") && !strcmp(l->content, " 1 2 3 ") && !strcmp(l->next->content, "ss") && !strcmp(l->next->next->content, "-_-"))
-				printf("%zu\n", ret->content_size);
-			printf("loh\n");
+
+	ft_lstadd(&l, s);
+	ft_lstadd(&l, k);
+	z = ft_lstmap(l, f);
+	while (z)
+	{
+		printf("%s %zu\n", (char *)z->content, z->content_size);
+		z = z->next;
+	}
 }
 
