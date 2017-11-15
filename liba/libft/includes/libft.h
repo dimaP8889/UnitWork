@@ -90,4 +90,6 @@ t_list	*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
 void	ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 
 void	ft_lstaddlast(t_list *lst, t_list *elem);
+char	*ft_str_gather(char const **s, char c);
+t_list	*ft_lstsortcontent(t_list *list);
 #endif

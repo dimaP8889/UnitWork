@@ -12,7 +12,7 @@
 
 #include "../includes/libft.h"
 
-static	int	check(char const *s)
+static	int				check(char const *s)
 {
 	char const	*str;
 
@@ -27,13 +27,13 @@ static	int	check(char const *s)
 	return (1);
 }
 
-static	int		countwords(char const *s)
+static	int				countwords(char const *s)
 {
 	int		index;
 
 	index = 0;
 	while (*s == ' ' || *s == '\n' || *s == '\t')
-			s++;
+		s++;
 	while (*s)
 	{
 		while (*s != ' ' && *s != '\n' && *s != '\t' && *s != '\0')
@@ -56,7 +56,7 @@ static	char	const	*strsplit(char const *s)
 	return (s);
 }
 
-char		*ft_strtrim(char const *s)
+char					*ft_strtrim(char const *s)
 {
 	char *str;
 	char *str1;
@@ -72,12 +72,12 @@ char		*ft_strtrim(char const *s)
 		{
 			while (*s != ' ' && *s != '\n' && *s != '\t' && *s != '\0')
 				*(str++) = *(s++);
-			if (check (s) || *s == '\0')
+			if (check(s) || *s == '\0')
 			{
 				*str = '\0';
 				return (str1);
 			}
-				*(str++) = *(s++);
+			*(str++) = *(s++);
 		}
 		*str = '\0';
 		return (str1);

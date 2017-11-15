@@ -12,7 +12,7 @@
 
 #include "../includes/libft.h"
 
-static int countlet(char const *s, char c)
+static int		countlet(char const *s, char c)
 {
 	int index;
 
@@ -27,7 +27,7 @@ static int countlet(char const *s, char c)
 	return (index + 1);
 }
 
-static int count(char const *s, char c)
+static int		count(char const *s, char c)
 {
 	int index;
 
@@ -79,7 +79,7 @@ static	char	*make_word(char const *s, int *i, char c)
 	return (str1);
 }
 
-char	**ft_strsplit(char const *s, char c)
+char			**ft_strsplit(char const *s, char c)
 {
 	char	**split;
 	char	**split1;

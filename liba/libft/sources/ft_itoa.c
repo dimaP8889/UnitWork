@@ -72,7 +72,7 @@ static	char	*mk_str(int num, char *str)
 	return (ft_strrev(str1));
 }
 
-char	*ft_itoa(int index)
+char			*ft_itoa(int index)
 {
 	int		size;
 	char	*str;
