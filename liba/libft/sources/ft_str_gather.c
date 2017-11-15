@@ -34,17 +34,17 @@ char			*ft_str_gather(char const **s, char c)
 
 	index = 0;
 	if (!s)
-	 	return (NULL);
+		return (NULL);
 	str = (char *)malloc(sizeof(char) * (count(s) + 1));
 	if (!str)
-	 	return (0);
+		return (0);
 	str1 = str;
 	while (*s)
 	{
 		while ((*s)[index])
 			*(str++) = (*s)[index++];
 		s++;
-		index = 0;	
+		index = 0;
 		if (*s)
 			*(str++) = c;
 		else

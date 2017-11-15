@@ -38,7 +38,8 @@ static	t_list	*bubblesort(int num, t_list *list)
 	{
 		while (list->next)
 		{
-			if (ft_strcmp((char *)list->content, (char *)list->next->content) > 0)
+			if (ft_strcmp((char *)list->content,
+				(char *)list->next->content) > 0)
 			{
 				check->content = list->content;
 				list->content = list->next->content;

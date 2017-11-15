@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_inoder.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpogrebn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/01 05:37:44 by dpogrebn          #+#    #+#             */
-/*   Updated: 2017/11/01 05:37:44 by dpogrebn         ###   ########.fr       */
+/*   Created: 2017/11/16 01:16:53 by dpogrebn          #+#    #+#             */
+/*   Updated: 2017/11/16 01:16:54 by dpogrebn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int		main(int argc, char **argv)
+void	ft_inoder(b_tree *tree, void *(f)(void *))
 {
-	ft_readfiles(argc, argv);
+	if (!tree)
+		return (0);
+	if (tree->left)
+		ft_proder(tree->left, f);
+	f(tree->content);
+	if (tree->right)
+		ft_proder(tree->right, f);
 }

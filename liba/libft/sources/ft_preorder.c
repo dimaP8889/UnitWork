@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_preorder.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpogrebn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/01 05:37:44 by dpogrebn          #+#    #+#             */
-/*   Updated: 2017/11/01 05:37:44 by dpogrebn         ###   ########.fr       */
+/*   Created: 2017/11/16 01:28:23 by dpogrebn          #+#    #+#             */
+/*   Updated: 2017/11/16 01:28:23 by dpogrebn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int		main(int argc, char **argv)
+void	ft_preorder(t_btree *tree, void (*f)(void *))
 {
-	ft_readfiles(argc, argv);
+	if (!tree)
+		return (0);
+	f(tree->content);
+	if (tree->left)
+		ft_preorder(tree->left, f);
+	if (tree->right)
+		ft_preorder(tree->right, f);
 }

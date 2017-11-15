@@ -1,18 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   test.c                                             :+:      :+:    :+:   */
+/*   ft_postorder.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dpogrebn <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/01 05:37:44 by dpogrebn          #+#    #+#             */
-/*   Updated: 2017/11/01 05:37:44 by dpogrebn         ###   ########.fr       */
+/*   Created: 2017/11/16 01:32:54 by dpogrebn          #+#    #+#             */
+/*   Updated: 2017/11/16 01:32:55 by dpogrebn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/libft.h"
 
-int		main(int argc, char **argv)
+void	ft_postoder(t_btree *tree, void (*f)(void *))
 {
-	ft_readfiles(argc, argv);
+	if (!tree)
+		return (0);
+	if (tree->left)
+		ft_proder(tree->left, f);
+	if (tree->right)
+		ft_proder(tree->right, f);
+	f(tree->content);
 }
