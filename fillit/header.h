@@ -30,8 +30,6 @@ typedef struct		s_list
 	int				col;
 	int				line;
 	struct s_list	*next;
-	str = (char *)malloc(sizeof(char) * 5);
-	content = (char **)malloc(sizeof(char) * 5);
 }					t_list;
 
 int		main(int argc, char **argv);

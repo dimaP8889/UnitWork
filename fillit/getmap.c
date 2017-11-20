@@ -27,7 +27,7 @@ int		makelist(t_list **list, char c)
 		{
 			if (c != '\n')
 				return (-1);
-			(*list)->str = '\0';
+			(*list)->str[(*list)->line] = '\0';
 			(*list)->content[(*list)->col] = (*list)->str;
 			((*list)->col)++;
 			(*list)->line = 0;
@@ -53,15 +53,17 @@ t_list		*getmap(int argc, char **argv)
 	int		func_ret;
 	t_list	*list;
 
-	list = (t_list)malloc(sizeof(t_list));
+	list = (t_list *)malloc(sizeof(t_list));
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1 || !list)
 		return (0);
-	while (ret = read(fd, c, 1))
+	list->str = (char *)malloc(sizeof(char) * 5);
+	list->content = (char **)malloc(sizeof(char) * 5);
+	while (ret == read(fd, c, 1))
 	{
 		if (c != '#' || c != '.' || c != '\n')
 			return (0);
-		func_ret = makelist(list, c);
+		func_ret = makelist(&list, c);
 		if (func_ret == 1)
 		{
 			ft_lstadd(&list, list);
@@ -72,4 +74,5 @@ t_list		*getmap(int argc, char **argv)
 		if (func_ret == 0)
 			continue ;
 	}
+	return (list);
 }
