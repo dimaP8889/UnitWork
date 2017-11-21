@@ -19,20 +19,14 @@
 # include <sys/types.h>
 # include <sys/stat.h>
 # include <fcntl.h>
+# include "./libft/libft.h"
 
 # define LINE 4
 # define COL 4
 
-typedef struct		s_list
-{
-	char			**content;
-	char			*str;
-	int				col;
-	int				line;
-	struct s_list	*next;
-}					t_list;
-
-int		main(int argc, char **argv);
+int					main(int argc, char **argv);
+t_list				*getmap(char **argv);
+int					check_sharps(t_list *list);
 
 
 #endif
