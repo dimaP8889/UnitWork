@@ -11,14 +11,19 @@
 /* ************************************************************************** */
 
 #include "libft.h"
+# include <stdio.h>
 
-void	ft_lstaddlast(t_list *lst, t_list *elem)
+void	ft_lstaddlast(t_list **lst, t_list *elem)
 {
-	if (lst && elem)
+	t_list *new;
+
+	new = *lst;
+	if ((*lst) && elem && lst)
 	{
-		while (lst->next)
-			lst = lst->next;
-		lst->next = elem;
+		while (new->next)
+			new = new->next;
+		new->next = elem;
 	}
-	return ;
+	if (*lst == NULL && elem != NULL && lst != NULL)
+		*lst = elem;
 }

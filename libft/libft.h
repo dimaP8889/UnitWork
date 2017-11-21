@@ -79,6 +79,14 @@ void				ft_putnbr_fd(int n, int fd);
 typedef struct		s_list
 {
 	void			*content;
+	char			**include;
+	char			*str;
+	int				line;
+	int				col;
+	int				count;
+	int				y_first;
+	int				y_last;
+	char			let;
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
@@ -96,7 +104,7 @@ typedef struct		s_btree
 	struct s_btree	*left;
 	void			*data;
 }					t_btree;
-void				ft_lstaddlast(t_list *lst, t_list *elem);
+void				ft_lstaddlast(t_list **lst, t_list *elem);
 char				*ft_str_gather(char const **s, char c);
 t_list				*ft_lstsortcontent(t_list *list);
 void				ft_inoder(t_btree *tree, void (*f)(void *));
