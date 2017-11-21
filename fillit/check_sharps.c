@@ -18,16 +18,16 @@ int		check_near_sharpes(t_list *list, int line, int col)
 
 	count = 0;
 	if (line + 1 < 3)
-		if (list->include[col][line + 1] == '#')
+		if (list->include[col][line + 1] == list->let)
 			count++;
 	if (line - 1 >= 0)
-		if (list->include[col][line - 1] == '#')
+		if (list->include[col][line - 1] == list->let)
 			count++;
 	if (col + 1 < 3)
-		if (list->include[col + 1][line] == '#')
+		if (list->include[col + 1][line] == list->let)
 			count++;
 	if (col - 1 >= 0)
-		if (list->include[col - 1][line] == '#')
+		if (list->include[col - 1][line] == list->let)
 			count++;
 	return(count);
 }
@@ -46,7 +46,7 @@ int		check_sharps(t_list *list)
 	{
 		while (line < LINE)
 		{
-			if (list->include[col][line] == '#')
+			if (list->include[col][line] == list->let)
 			{
 				check = check_near_sharpes(list, line, col);
 				if (check > max)
