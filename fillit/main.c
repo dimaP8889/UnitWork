@@ -11,23 +11,21 @@
 /* ************************************************************************** */
 
 #include "header.h"
-//#include "./libft/libft.h"
-
-void	del(void	*str, size_t	num)
-{
-	free(str);
-	(void)num;
-}
 
 int		main(int argc, char **argv)
 {
 	t_list		*new;
+	t_list		*list;
 	int			i;
+	int			count;
+
+	count = 0;
 
 	i = 0;
 	if (argc != 2)
 		return (0);
 	new = getmap(argv);
+	list = new;
 	while (new)
 	{
 		while (new->include[i])
@@ -35,9 +33,17 @@ int		main(int argc, char **argv)
 			printf("%s\n", new->include[i]);
 			i++;
 		}
+		while (count < SIZE)
+			{
+				printf("x :%i\n", new->x[count]);
+				printf("y :%i\n", new->y[count]);
+				printf("\n");
+				count++;
+			}
+			count = 0;
 		printf("\n");
 		i = 0;
 		new = new->next;
 	}
-	//validation();
+	//solve(list);
 }
