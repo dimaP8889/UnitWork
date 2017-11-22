@@ -21,8 +21,7 @@
 # include <fcntl.h>
 # include "./libft/libft.h"
 
-# define LINE 4
-# define COL 4
+# define SIZE 4
 
 int					main(int argc, char **argv);
 t_list				*getmap(char **argv);

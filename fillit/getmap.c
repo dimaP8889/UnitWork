@@ -14,7 +14,7 @@
 
 int		check_norm(t_list *list)
 {
-	if (list->col < COL || list->count != 4 || list->let > 'Z')
+	if (list->col < SIZE || list->count != SIZE || list->let > 'Z')
 		return (0);
 	return(1);
 }
@@ -36,23 +36,11 @@ int		allocate_mem(t_list **list, int count)
 
 void	if_find_sharp(t_list *list, char *c)
 {
-	if (*c == '#' && (list)->count == 0)
-	{
-		list->count++;
-		list->y_first = list->col;
-		*c = list->let;
-		return ;
-	}
-	if (*c == '#' && (list)->count == 3)
-	{
-		list->count++;
-		list->y_last = list->col;
-		*c = list->let;
-		return ;
-	}
 	if (*c == '#')
 	{
-		(list)->count++;
+		list->x[list->count] = list->line;
+		list->y[list->count] = list->col;
+		list->count++;
 		*c = list->let;
 	}
 }
@@ -60,8 +48,8 @@ void	if_find_sharp(t_list *list, char *c)
 int		makelist(t_list *list, char c)
 {
 	if_find_sharp((list), &c);
-	if (list->col < COL)
-		if (list->line < LINE)
+	if (list->col < SIZE)
+		if (list->line < SIZE)
 		{
 			list->str[list->line] = c;
 			(list->line)++;
