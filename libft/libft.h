@@ -84,6 +84,8 @@ typedef struct		s_list
 	int				line;
 	int				col;
 	int				count;
+	int				x[4];
+	int				y[4];
 	int				y_first;
 	int				y_last;
 	char			let;
