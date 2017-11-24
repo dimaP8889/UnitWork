@@ -35,9 +35,9 @@ int		main(int argc, char **argv)
 		}
 		while (count < SIZE)
 			{
-				printf("x :%i\n", new->x[count]);
-				printf("y :%i\n", new->y[count]);
-				printf("\n");
+				//printf("x :%i\n", new->x[count]);
+				//printf("y :%i\n", new->y[count]);
+				//printf("\n");
 				count++;
 			}
 			count = 0;
@@ -45,5 +45,5 @@ int		main(int argc, char **argv)
 		i = 0;
 		new = new->next;
 	}
-	//solve(list);
+	solve(list);
 }

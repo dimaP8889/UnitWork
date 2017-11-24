@@ -108,6 +108,7 @@ t_list		*takelist(int fd, char *c, int func_ret, t_list *list)
 		return (0);
 	count++;
 	ft_lstaddlast(&new, list);
+	new->count_lists = count;
 	return (new);
 }
 
