@@ -72,22 +72,39 @@ void	make_optimal(t_list *list)
 	check_optimal_y(list, y);
 }
 
-char	**makemass(void)
+int		find_sqrt(int count)
+{
+	int a;
+
+	a = 0;
+	while (a * a < count)
+		a++;
+	return (2 * a);
+}
+
+char	**makemass(int count)
 {
 	char	**mass;
 	char	**solve;
 	int		line;
 	int		col;
+	int		min_size;
 
 	line = 0;
 	col = 0;
+	min_size = find_sqrt(count);
 	solve = (char **)malloc(sizeof(char *) * (MAXSIZE + 1));
 	mass = solve;
 	while (col < MAXSIZE)
 	{
 		solve[col] = (char *)malloc(sizeof(char) * (MAXSIZE + 1));
 		while (line < MAXSIZE)
-			(solve[col][line++]) = '.';
+		{
+			if (col < min_size && line < min_size)
+				(solve[col][line++]) = '.';
+			else
+				(solve[col][line++]) = ',';
+		}
 		solve[col][line] = '\0';
 		line = 0;
 		col++;
@@ -99,13 +116,21 @@ char	**makemass(void)
 char	**solve(t_list *list)
 {
 	char	**mass;
-	int		index;
+	t_list	*new;
 	int		count;
 
-	count = 1;
-	index = 0;
-	mass = makemass();
-	make_optimal(list);
+	count = 0;
+	new = list;
+	while (list)
+	{
+		make_optimal(list);
+		count++;
+		//printf("%i\n", list->count_lists);
+		list = list->next;
+	}
+	//printf("%i\n", count);
+	mass = makemass(count);
 	//making_figure(list, mass);
+	ft_make_figure(new, &mass);
 	return (NULL);
 }
