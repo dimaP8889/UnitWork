@@ -29,9 +29,4 @@ int					check_sharps(t_list *list);
 char				**solve(t_list *list);
 int					ft_make_figure(t_list *list, char ***mass);
 
-typedef struct 		s_mass
-{
-	int				x;
-	int				y;
-}					t_mass;
 #endif

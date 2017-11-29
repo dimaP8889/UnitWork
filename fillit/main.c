@@ -28,8 +28,12 @@ int		main(int argc, char **argv)
 	list = new;
 	while (new)
 	{
+		// if (new->let > 'A')
+		// 	printf("%c\n", new->prev->let);
 		while (new->include[i])
 		{
+			// if (new->let > 'A')
+			// 	printf("%c\n", new->prev->let);
 			printf("%s\n", new->include[i]);
 			i++;
 		}

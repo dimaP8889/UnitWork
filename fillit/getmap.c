@@ -30,6 +30,8 @@ int		allocate_mem(t_list **list, int count)
 	(*list)->col = 0;
 	(*list)->next = NULL;
 	(*list)->count = 0;
+	(*list)->x_coord = -1;
+	(*list)->y_coord = 0;
 	((*list)->let) = 'A' + count;
 	return (1);
 }
@@ -74,14 +76,29 @@ int		makelist(t_list *list, char c)
 	return (0);
 }
 
+void		find_prev(t_list *new, t_list **list)
+{
+	if (new)
+	{
+		while (new->next)
+			new = new->next;
+		(*list)->prev = new;
+			//printf("%c\n", (*list)->prev->let);
+	}
+	else
+		(*list)->prev = NULL;
+}
+
 int		func_ret_one(int *count, t_list	**new, t_list **list)
 {
 	if(!check_norm(*list) || !check_sharps(*list))
 		return (0);
 	(*count)++;
+	find_prev(*new, list);
 	ft_lstaddlast(new, *list);
 	if (!allocate_mem(list, *count))
 		return (0);
+
 	return (1);
 }
 
@@ -108,6 +125,7 @@ t_list		*takelist(int fd, char *c, int func_ret, t_list *list)
 	if(!check_norm(list) || !check_sharps(list))
 		return (0);
 	count++;
+	find_prev(new, &list);
 	ft_lstaddlast(&new, list);
 	return (new);
 }
