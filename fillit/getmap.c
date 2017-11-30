@@ -30,7 +30,7 @@ int		allocate_mem(t_list **list, int count)
 	(*list)->col = 0;
 	(*list)->next = NULL;
 	(*list)->count = 0;
-	(*list)->x_coord = -1;
+	(*list)->x_coord = 0;
 	(*list)->y_coord = 0;
 	((*list)->let) = 'A' + count;
 	return (1);
@@ -83,7 +83,6 @@ void		find_prev(t_list *new, t_list **list)
 		while (new->next)
 			new = new->next;
 		(*list)->prev = new;
-			//printf("%c\n", (*list)->prev->let);
 	}
 	else
 		(*list)->prev = NULL;

@@ -79,7 +79,6 @@ int		find_sqrt(int count)
 	a = 0;
 	while (a * a < count)
 		a++;
-	printf("%i\n", 2 * a);
 	return (2 * a);
 }
 
@@ -126,13 +125,10 @@ char	**solve(t_list *list)
 	{
 		make_optimal(list);
 		count++;
-		//printf("%i\n", list->count_lists);
 		list = list->next;
 	}
-	//printf("%i\n", count);
 	mass = makemass(count);
-	//making_figure(list, mass);
 	ft_make_figure(new, &mass);
-	printf("test3\n");
-	return (NULL);
+	
+	return (mass);
 }

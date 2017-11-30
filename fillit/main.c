@@ -18,6 +18,7 @@ int		main(int argc, char **argv)
 	t_list		*list;
 	int			i;
 	int			count;
+	char		**final;
 
 	count = 0;
 
@@ -26,28 +27,11 @@ int		main(int argc, char **argv)
 		return (0);
 	new = getmap(argv);
 	list = new;
-	while (new)
-	{
-		// if (new->let > 'A')
-		// 	printf("%c\n", new->prev->let);
-		while (new->include[i])
-		{
-			// if (new->let > 'A')
-			// 	printf("%c\n", new->prev->let);
-			printf("%s\n", new->include[i]);
-			i++;
-		}
-		while (count < SIZE)
-			{
-				//printf("x :%i\n", new->x[count]);
-				//printf("y :%i\n", new->y[count]);
-				//printf("\n");
-				count++;
-			}
-			count = 0;
-		printf("\n");
-		i = 0;
-		new = new->next;
-	}
-	solve(list);
+	final = solve(list);
+	ft_print(final);
+	// while (*final)
+	// {
+	// 	printf("%s\n", *final);
+	// 	final++;
+	// }
 }

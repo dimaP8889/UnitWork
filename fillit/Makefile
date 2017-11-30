@@ -10,7 +10,7 @@
 #                                                                              #
 #******************************************************************************#
 
-SRC = getmap.c main.c check_sharps.c solve.c ft_make_figure.c
+SRC = getmap.c main.c check_sharps.c solve.c ft_make_figure.c ft_print.c
 HEADER = header.h 
 FLAGS = -Wall -Wextra -Werror
 NAME = fillit

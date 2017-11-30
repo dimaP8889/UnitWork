@@ -27,6 +27,7 @@ int					main(int argc, char **argv);
 t_list				*getmap(char **argv);
 int					check_sharps(t_list *list);
 char				**solve(t_list *list);
-int					ft_make_figure(t_list *list, char ***mass);
+void				ft_make_figure(t_list *list, char ***mass);
+void				ft_print(char **mass);
 
 #endif
