@@ -18,16 +18,16 @@ int		check_near_sharpes(t_list *list)
 
 	count = 0;
 	if (list->x[list->count] + 1 < 3)
-		if (list->x[list->count] + 1 == list->x[list->count + 1])
+		if (list->include[list->y[list->count]][list->x[list->count] + 1] == list->let)
 			count++;
 	if (list->x[list->count] - 1 >= 0)
-		if (list->x[list->count] - 1 == list->x[list->count - 1])
+		if (list->include[list->y[list->count]][list->x[list->count] - 1] == list->let)
 			count++;
 	if (list->y[list->count] + 1 < 3)
-		if (list->y[list->count] + 1 == list->y[list->count + 1])
+		if (list->include[list->y[list->count + 1]][list->x[list->count]] == list->let)
 			count++;
 	if (list->y[list->count] - 1 >= 0)
-		if (list->y[list->count] - 1 == list->y[list->count - 1])
+		if (list->include[list->y[list->count - 1]][list->x[list->count]] == list->let)
 			count++;
 	return(count);
 }

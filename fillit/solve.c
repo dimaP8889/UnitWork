@@ -129,6 +129,5 @@ char	**solve(t_list *list)
 	}
 	mass = makemass(count);
 	ft_make_figure(new, &mass);
-	
 	return (mass);
 }

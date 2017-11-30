@@ -96,9 +96,7 @@ void	make_square_bigger(char ***mass)
 	while (map[col][line] != ',')
 	{
 		while (map[col][line] != ',')
-		{
 			line++;
-		}
 		map[col][line] = '.';
 		col++;
 		count = line;
@@ -122,22 +120,36 @@ void	ft_make_figure(t_list *list, char ***mass)
 	map = *mass;
 	if (list == NULL)
 		return ;
-	list->x_coord++;
-	if (try_figure(list, map))
+	if (try_figure(list, *mass))
 	{
 		list = list->next;
 		if (list == NULL)
 			return ;
-		ft_make_figure(list, &map);
+		while (index < 15)
+		{
+			printf("%s\n", map[index]);
+			index++;
+		}
+		printf("\n");
+		ft_make_figure(list, mass);
 	}
 	else
 	{
-		clean_map(&map, list);
+		clean_map(mass, list);
+		printf("back\n");
+		while (index < 15)
+		{
+			printf("%s\n", map[index]);
+			index++;
+		}
+		printf("\n");
 		if (list->prev == NULL)
 		{
-			make_square_bigger(&map);
-			ft_make_figure(list, &map);
+			make_square_bigger(mass);
+			ft_make_figure(list, mass);
 		}
-		ft_make_figure(list->prev, &map);
+		if (list->prev)
+			list->prev->x_coord++;
+		ft_make_figure(list->prev, mass);
 	}
 }

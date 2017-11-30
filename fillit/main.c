@@ -15,19 +15,12 @@
 int		main(int argc, char **argv)
 {
 	t_list		*new;
-	t_list		*list;
-	int			i;
-	int			count;
 	char		**final;
 
-	count = 0;
-
-	i = 0;
 	if (argc != 2)
 		return (0);
 	new = getmap(argv);
-	list = new;
-	final = solve(list);
+	final = solve(new);
 	ft_print(final);
 	// while (*final)
 	// {
