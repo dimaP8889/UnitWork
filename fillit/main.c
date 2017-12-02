@@ -18,13 +18,17 @@ int		main(int argc, char **argv)
 	char		**final;
 
 	if (argc != 2)
+	{
+		ft_putstr("usage: ./fillit target_file\n");
 		return (0);
+	}
 	new = getmap(argv);
+	ft_clean(&new);
 	final = solve(new);
+	if (!new || !(final))
+	{
+		ft_putstr("error\n");
+		return (0);
+	}
 	ft_print(final);
-	// while (*final)
-	// {
-	// 	printf("%s\n", *final);
-	// 	final++;
-	// }
 }

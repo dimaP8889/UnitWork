@@ -11,65 +11,33 @@
 /* ************************************************************************** */
 
 #include "header.h"
-#define MAXSIZE 72
 
-void	check_optimal_y(t_list *list, int check)
+void	make_square_bigger(char ***mass)
 {
-	int		coord;
-	int		min;
+	char	**map;
+	int		col;
+	int		line;
+	int		count;
 
-	min = check;
-	coord = 0;
-	while (coord < SIZE)
+	map = *mass;
+	col = 0;
+	line = 0;
+	while (map[col][line] != ',')
 	{
-		if (list->y[coord] < min)
-			min = list->x[coord];
-		coord++;
+		while (map[col][line] != ',')
+			line++;
+		map[col][line] = '.';
+		col++;
+		count = line;
+		line = 0;
 	}
-	coord = 0;
-	if (min > 0)
+	while (count > -1)
 	{
-		while (coord < SIZE)
-		{
-			list->y[coord] = list->y[coord] - min;
-			coord++;
-		}
+		map[col][line] = '.';
+		count--;
+		line++;
 	}
-}
-
-void	check_optimal_x(t_list *list, int check)
-{
-	int		coord;
-	int		min;
-
-	min = check;
-	coord = 0;
-	while (coord < SIZE)
-	{
-		if (list->x[coord] < min)
-			min = list->x[coord];
-		coord++;
-	}
-	coord = 0;
-	if (min > 0)
-	{
-		while (coord < SIZE)
-		{
-			list->x[coord] = list->x[coord] - min;
-			coord++;
-		}
-	}
-}
-
-void	make_optimal(t_list *list)
-{
-	int		x;
-	int		y;
-
-	x = list->x[0];
-	y = list->y[0];
-	check_optimal_x(list, x);
-	check_optimal_y(list, y);
+	col = 0;
 }
 
 int		find_sqrt(int count)
@@ -79,12 +47,13 @@ int		find_sqrt(int count)
 	a = 0;
 	while (a * a < count)
 		a++;
+	if (a * a != count)
+		return (2 * a - 1);
 	return (2 * a);
 }
 
 char	**makemass(int count)
 {
-	char	**mass;
 	char	**solve;
 	int		line;
 	int		col;
@@ -94,7 +63,6 @@ char	**makemass(int count)
 	col = 0;
 	min_size = find_sqrt(count);
 	solve = (char **)malloc(sizeof(char *) * (MAXSIZE + 1));
-	mass = solve;
 	while (col < MAXSIZE)
 	{
 		solve[col] = (char *)malloc(sizeof(char) * (MAXSIZE + 1));
@@ -110,7 +78,27 @@ char	**makemass(int count)
 		col++;
 	}
 	solve[col] = NULL;
-	return (mass);
+	return (solve);
+}
+
+void	algo(t_list *new, char **mass)
+{
+	int		res;
+
+	while (new)
+	{
+		res = ft_make_figure(new, &mass);
+		if (!res)
+		{
+			make_square_bigger(&mass);
+			while (new->prev)
+				new = new->prev;
+		}
+		else if (res == -1)
+			new = new->prev;
+		else
+			new = new->next;
+	}
 }
 
 char	**solve(t_list *list)
@@ -128,6 +116,6 @@ char	**solve(t_list *list)
 		list = list->next;
 	}
 	mass = makemass(count);
-	ft_make_figure(new, &mass);
+	algo(new, mass);
 	return (mass);
 }
