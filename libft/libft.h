@@ -86,9 +86,9 @@ typedef struct		s_list
 	int				count;
 	int				x[4];
 	int				y[4];
-	int				count_lists;
 	int				x_coord;
-	int				y_coord;	
+	int				y_coord;
+	int				size;
 	char			let;
 	size_t			content_size;
 	struct s_list	*next;
