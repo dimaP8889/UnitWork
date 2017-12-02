@@ -47,22 +47,29 @@ SRC = check_sharps.c ft_make_figure.c getmap.c main.c ft_extra_func.c \
 HEADERL = libft/libft.h
 HEADER = header.h
 NAME = fillit
-NAMEL = libft.a
+NAMEL = libft/libft.a
 OBJL = $(SRCL:.c=.o)
+LIB = -L. -lft
+
+
 
 all: $(NAME)
 
 $(NAME):$(NAMEL)
-	$(CC) -o $(NAME) $(SRC) -I $(HEADER)
+	$(CC) -o $@ $< $(SRC) -I $(HEADER)
 
-$(NAMEL):
-	$(CC) -c $(FLAGS) $(SRCL) -I $(HEADERL)
+$(NAMEL):$(OBJL)
 	ar rsc $(NAMEL) $(OBJL)
+
+%.o: %.c
+	$(CC) -c $(FLAGS) $< -o $@
 
 clean:
 	rm -rf $(OBJL)
 
 fclean: clean
 	rm -rf $(NAME)
+	rm -rf $(NAMEL)
 
-re: fclean $(NAME)
+
+re: fclean all
