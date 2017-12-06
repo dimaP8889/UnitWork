@@ -26,7 +26,7 @@ typedef struct			s_gnl
 {
 	char				c[BUFSIZE + 1];
 	int					*count_back_slash[1];
-	int					*coord[1];
+	int					check_back_slash;
 	char				str_join[BUFSIZE + 1];
 	int					count_lists;
 	int					count_size;

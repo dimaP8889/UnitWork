@@ -12,68 +12,57 @@
 
 #include "get_next_line.h"
 
-int	count_mem(t_gnl *work_list)
+int	count_mem(t_gnl *new, const int fd)
 {
 	int	index;
 
 	index = 0;
-	while (work_list->list)
+	read(fd, new->c, BUFSIZE);
+	new->c[BUFSIZE] = '\0';
+	while (new->c[index] != '\0')
 	{
-		while (work_list->list->content[index] != '\n' 
-		|| work_list->list->content[index] != '\0')
-			list->count_size++;
-		if (work_list->list->content[index] == '\n')
-			return (1);
-		return (0);
+		if (new->c[index] == '\n' 
+			&& new->check_back_slash = 1)
+		{
+			new->count_size = 0;
+			new->check_back_slash = 0;
+		}
+		else if (new->c[index] == '\n' 
+			&& new->c = 0)
+		{
+			new->check_back_slash = 0;
+			return (0);
+		}
+		new->count_size++;
+		index++;
 	}
+	return (1);
 }
 
-int	check_buff(t_gnl *work_list, char **mass)
+char	*make_arr(t_gnl *work_list, char *arr)
 {
-	int		line;
-	int		count_back_slash;
-	int		index;
 
-	index = 0;
-	line = list->coord[0];
-	count = list->count_back_slash[0];
-	if (count_mem(work_list))
+}
+
+int	check_buff(t_gnl *work_list, char **arr, const int fd)
+{
+	t_gnl *new;
+
+	new = (t_gnl *)malloc(sizeof(t_gnl));
+	while (count_mem(work_list, fd))
 	{
-		*mass = (char *)malloc(sizeof(char) * list->count_size + 1);
-		ft_
+		new->list = ft_lstnew(new->c, ft_strlen(new->list));
+		ft_lstaddlast(&work_list->list, new->list);
 	}
-	// while ((list->c[line] != '\n' && count >= 0) || list->c[line] = '\0')
-	// {
-	// 	*(mass[line]) = list->c[line];
-	// 	line++;
-	// 	if (list->c[line] == '\n')
-	// 		count--;
-	// }
-	if (list->c[line] = '\0')
-		return (1);
-	list->coord[0] = line;
-	list->count_back_slash[0]++;
-	return (0);
+	*arr = (char *)malloc(sizeof(char) * work_list->count_size);
+	make_arr(work_list, arr);
 }
 
 int get_next_line(const int fd, char **line)
 {
-	t_gnl	*new;
-	t_gnl	*work_list;
+	static t_gnl *new;
 
-	new = (t_gnl *)malloc(sizeof(t_gnl));
-	work_list = NULL;
-	if (check_buff(new, line))
-	{
-		read(fd, new->c, BUFSIZE);
-		new->list = ft_lstnew(new->c, ft_strlen(new->c));
-		ft_lstaddlast(&work_list->list, new->list);
-		//list->count_lists = ft_lstcount(work_list);
-		check_buff(work_list, line);
-	}
-	else
-		return (1);
-	return (get_next_line(fd, line));
+	check_buff(new, line);
 }
 
 int main(int ac,char **ag)
