@@ -27,6 +27,9 @@ typedef struct			s_gnl
 	char				c[BUFSIZE + 1];
 	int					*count_back_slash[1];
 	int					*coord[1];
+	char				str_join[BUFSIZE + 1];
+	int					count_lists;
+	int					count_size;
 	int					*files;
 	int					file_num;
 	t_list				*list;
