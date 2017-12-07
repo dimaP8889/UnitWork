@@ -20,29 +20,16 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define BUFSIZE 100
+# define BUFSIZE 5
 
 typedef struct			s_gnl
 {
 	char				c[BUFSIZE + 1];
-	int					*count_back_slash[1];
-	int					check_back_slash;
-	char				str_join[BUFSIZE + 1];
-	int					count_lists;
 	int					count_size;
-	int					*files;
+	char				*last_str;
+	int					size;
 	int					file_num;
 	t_list				*list;
-	t_s_back_slashes	**num;
 }						t_gnl;
 
-typedef struct s_back_slashes
-{
-	int			count_back_slash;
-}				t_s_back_slashes;
-
-typedef struct s_files
-{
-	int			count_files;
-}				t_files;
 #endif
