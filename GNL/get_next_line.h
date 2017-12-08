@@ -20,7 +20,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define BUFSIZE 5
+# define BUFSIZE 50
 
 typedef struct			s_gnl
 {
@@ -28,8 +28,13 @@ typedef struct			s_gnl
 	int					count_size;
 	char				*last_str;
 	int					size;
+	int					move;
 	int					file_num;
+	int					count_it;
+	int					ret;
+	char				*str;
 	t_list				*list;
 }						t_gnl;
+int get_next_line(const int fd, char **line);
 
 #endif

@@ -12,6 +12,43 @@
 
 #include "get_next_line.h"
 
+void	ft_make_buf(t_gnl *new)
+{
+	char	*str;
+	int		index;
+	int		num;
+
+	index = 0;
+	num = BUFSIZE;
+	str = new->c;
+	while (*str != '\n')
+	{
+		num--;
+		str++;
+	}
+	str++;
+	while (num > 0)
+	{
+		new->c[index] = *str;
+		index++;
+		str++;
+		num--;
+	}
+	while (index < BUFSIZE)
+	{
+		new->c[index] = '\0';
+		index++;
+	}
+	//free(str);
+}
+
+void	ft_free_list(t_gnl *new)
+{
+	new->size = 0;
+	new->count_it--;
+	free(new->last_str);
+}
+
 void	ft_make_line(t_gnl *new, char *buf, int len)
 {
 	int		index;
@@ -24,32 +61,36 @@ void	ft_make_line(t_gnl *new, char *buf, int len)
 
 int get_next_line(const int fd, char **line)
 {
-	int				count_it;
-	int				ret;
-	char			*str;
 	static t_gnl	*new;
 
-	count_it = 0;
-	new = (t_gnl *)malloc(sizeof(t_gnl));
-	*line = (char *)malloc(sizeof(char) * BUFSIZE + 1);
-	while (!(str = ft_strchr(new->c, '\n')))
+	if (new == NULL)
 	{
-		printf("lol: %s\n", new->c);
-		*line = ft_strjoin(*line, new->c);
-		 	count_it++;
-		ret = read(fd, new->c, BUFSIZE);
-		if (ret == -1)
-			return (0);
+		new = (t_gnl *)malloc(sizeof(t_gnl));
+		new->count_it = -1;
+		*line = (char *)malloc(sizeof(char) * BUFSIZE + 1);
 	}
-	ft_make_line(new, new->c, str - new->c);
-	if (count_it == 0)
+	*line = ft_bzero(*line, ft_strlen(*line));
+	while (!(new->str = ft_strchr(new->c, '\n')))
 	{
-		*line = (char *)malloc(sizeof(char) * new->size + 1);
+		*line = ft_strjoin(*line, new->c);
+		 	new->count_it++;
+		new->ret = read(fd, new->c, BUFSIZE);
+		//printf("%i\n", new->ret);
+		if (new->ret == -1)
+			return (0);
+		// if (new->ret != BUFSIZE)
+		// 	break;
+	}
+	ft_make_line(new, new->c, new->str - new->c);
+	if (new->count_it == 0)
+	{
 		free(*line);
+		*line = (char *)malloc(sizeof(char) * new->size + 1);
 	}
 	*line = ft_strjoin(*line, new->last_str);
-	ft_bzero(new->c, str - new->c);
-	return (ret);
+	ft_make_buf(new);
+	ft_free_list(new);
+	return (new->ret);
 }
 
 int main(int ac,char **ag)
@@ -65,4 +106,23 @@ int main(int ac,char **ag)
 	printf("%s\n", mass);
 	get_next_line(fd, &mass);
 	printf("%s\n", mass);
+	get_next_line(fd, &mass);
+	printf("%s\n", mass);
+	get_next_line(fd, &mass);
+	printf("%s\n", mass);
+	get_next_line(fd, &mass);
+	printf("%s\n", mass);
+	get_next_line(fd, &mass);
+	printf("%s\n", mass);
+	get_next_line(fd, &mass);
+	printf("%s\n", mass);
+	get_next_line(fd, &mass);
+	printf("%s\n", mass);
+	get_next_line(fd, &mass);
+	printf("%s\n", mass);
+	get_next_line(fd, &mass);
+	printf("%s\n", mass);
+	//get_next_line(fd, &mass);
+	//printf("%s\n", mass);
+	//sleep(15);
 }
