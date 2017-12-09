@@ -66,30 +66,32 @@ int get_next_line(const int fd, char **line)
 	if (new == NULL)
 	{
 		new = (t_gnl *)malloc(sizeof(t_gnl));
-		new->count_it = -1;
+		//new->count_it = -1;
 		*line = (char *)malloc(sizeof(char) * BUFSIZE + 1);
 	}
+	//printf("it :%i\n", new->count_it);
 	*line = ft_bzero(*line, ft_strlen(*line));
 	while (!(new->str = ft_strchr(new->c, '\n')))
 	{
 		*line = ft_strjoin(*line, new->c);
-		 	new->count_it++;
+		 	//new->count_it++;
 		new->ret = read(fd, new->c, BUFSIZE);
-		//printf("%i\n", new->ret);
-		if (new->ret == -1)
+		new->c[BUFSIZE] = '\0';
+		printf("buf :%s\n", new->c);
+		if (new->ret == -1 || new->ret != BUFSIZE)
 			return (0);
-		// if (new->ret != BUFSIZE)
-		// 	break;
 	}
+	//printf("buf :%s\n", new->c);
 	ft_make_line(new, new->c, new->str - new->c);
-	if (new->count_it == 0)
-	{
-		free(*line);
-		*line = (char *)malloc(sizeof(char) * new->size + 1);
-	}
+	// if (new->count_it == 0)
+	// {
+	// 	free(*line);
+	// 	*line = (char *)malloc(sizeof(char) * new->size + 1);
+	// }
 	*line = ft_strjoin(*line, new->last_str);
 	ft_make_buf(new);
 	ft_free_list(new);
+	//new->count_it = 0;
 	return (new->ret);
 }
 
@@ -101,28 +103,16 @@ int main(int ac,char **ag)
 
 	fd = open(ag[1], O_RDONLY);
 	get_next_line(fd, &mass);
-	printf("%s\n", mass);
+	printf("str: %s\n", mass);
 	get_next_line(fd, &mass);
-	printf("%s\n", mass);
+	printf("str: %s\n", mass);
 	get_next_line(fd, &mass);
-	printf("%s\n", mass);
+	printf("str: %s\n", mass);
 	get_next_line(fd, &mass);
-	printf("%s\n", mass);
+	printf("str: %s\n", mass);
 	get_next_line(fd, &mass);
-	printf("%s\n", mass);
+	printf("str: %s\n", mass);
 	get_next_line(fd, &mass);
-	printf("%s\n", mass);
-	get_next_line(fd, &mass);
-	printf("%s\n", mass);
-	get_next_line(fd, &mass);
-	printf("%s\n", mass);
-	get_next_line(fd, &mass);
-	printf("%s\n", mass);
-	get_next_line(fd, &mass);
-	printf("%s\n", mass);
-	get_next_line(fd, &mass);
-	printf("%s\n", mass);
-	//get_next_line(fd, &mass);
-	//printf("%s\n", mass);
+	printf("str: %s\n", mass);
 	//sleep(15);
 }
