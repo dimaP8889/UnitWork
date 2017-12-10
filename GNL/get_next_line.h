@@ -9,6 +9,7 @@
 /*   Updated: 2017/12/04 13:07:50 by dpogrebn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+#define BUFF_SIZE 1000000000
 
 #ifndef _GET_NEXT_LINE_H_
 # define _GET_NEXT_LINE_H_
@@ -20,11 +21,9 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 
-# define BUFSIZE 50
-
 typedef struct			s_gnl
 {
-	char				c[BUFSIZE + 1];
+	char				c[BUFF_SIZE + 1];
 	int					count_size;
 	char				*last_str;
 	int					size;
