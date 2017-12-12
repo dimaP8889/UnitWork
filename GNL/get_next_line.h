@@ -9,7 +9,7 @@
 /*   Updated: 2017/12/04 13:07:50 by dpogrebn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#define BUFF_SIZE 100
+#define BUFF_SIZE 1
 
 #ifndef _GET_NEXT_LINE_H_
 # define _GET_NEXT_LINE_H_
@@ -32,7 +32,7 @@ typedef struct			s_gnl
 	int					ret;
 	int					file_descriptor;
 	char				*str;
-	t_list				*list;
+	struct s_gnl				*next;
 }						t_gnl;
 int get_next_line(const int fd, char **line);
 
