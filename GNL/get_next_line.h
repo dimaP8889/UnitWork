@@ -9,7 +9,7 @@
 /*   Updated: 2017/12/04 13:07:50 by dpogrebn         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#define BUFF_SIZE 1000000000
+#define BUFF_SIZE 100
 
 #ifndef _GET_NEXT_LINE_H_
 # define _GET_NEXT_LINE_H_
@@ -27,10 +27,10 @@ typedef struct			s_gnl
 	int					count_size;
 	char				*last_str;
 	int					size;
-	int					move;
 	int					file_num;
 	int					count_it;
 	int					ret;
+	int					file_descriptor;
 	char				*str;
 	t_list				*list;
 }						t_gnl;
