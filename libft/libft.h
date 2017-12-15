@@ -79,20 +79,8 @@ void				ft_putnbr_fd(int n, int fd);
 typedef struct		s_list
 {
 	void			*content;
-	char			**include;
-	char			*str;
-	int				line;
-	int				col;
-	int				count;
-	int				x[4];
-	int				y[4];
-	int				x_coord;
-	int				y_coord;
-	int				size;
-	char			let;
 	size_t			content_size;
 	struct s_list	*next;
-	struct s_list	*prev;
 }					t_list;
 t_list				*ft_lstnew(void const *content, size_t content_size);
 void				ft_lstdelone(t_list **alst, void (*del)(void *, size_t));

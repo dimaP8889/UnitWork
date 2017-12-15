@@ -59,4 +59,4 @@ fclean:
 	rm -rf ./*.o
 	rm -rf $(NAME)
 
-re: fclean $(NAME)
+re: fclean all
