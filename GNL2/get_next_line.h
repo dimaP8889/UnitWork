@@ -13,15 +13,15 @@
 #ifndef _GET_NEXT_LINE_H
 # define _GET_NEXT_LINE_H
 
-# include "./libft/libft.h"
+# include "./libft/includes/libft.h"
 # include <stdio.h>
 # include <fcntl.h>
 
-# define BUFF_SIZE 10
+# define BUFF_SIZE 1
 
 typedef struct			s_gnl
 {
-	char				c[BUFF_SIZE + 1];
+	char				*c;
 	char				*str;
 	char				*str1;
 	int					ret;
