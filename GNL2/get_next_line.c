@@ -53,6 +53,7 @@ void	ft_lback(t_gnl **lst, t_gnl **work, int fd)
 	elem = *work;
 	elem->fd = fd;
 	new = *lst;
+	elem->next = NULL;
 	if ((*lst) && elem && lst)
 	{
 		while (new->next)
@@ -95,7 +96,7 @@ int		ft_iter(t_gnl **list, t_gnl **new, char **line, int fd)
 {
 	char	*str;
 
-	while ((*new) && (*new)->fd != fd)
+	while (*new && (*new)->fd != fd)
 	 	(*new) = (*new)->next;
 	if (!(*new))
 	{
@@ -133,6 +134,7 @@ int		get_next_line(const int fd, char **line)
 		list->c = (char *)malloc(sizeof(char) * BUFF_SIZE);
 		list->fd = fd;
 		list->ret = 1;
+		list->next = NULL;
 	}
 	new = list;
 	if (!ft_iter(&list, &new, line, fd))
@@ -158,7 +160,7 @@ int		get_next_line(const int fd, char **line)
 // 	// fd3 = -1;
 // 	while ((gnl_ret = get_next_line(fd1, &mass)) > 0)
 // 	{
-// 		printf("%d\n", gnl_ret);
+// 		//printf("%d\n", gnl_ret);
 // 		if (gnl_ret == 1)
 // 			free(mass);
 // 		printf("str1: %s\n", mass);
